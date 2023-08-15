@@ -20,6 +20,9 @@ public class CustomerService {
 	@Autowired
 	private ResponseStructure<Customer> responseStructure;
 	
+	@Autowired
+	private ResponseStructure<List<Customer>> responseStructure2;
+	
 	// insert customer---------------------------------------------------------------------
 	public ResponseStructure<Customer> saveCustomer(Customer customer) {
 		Customer customer2 = customerDao.saveCustomer(customer);
@@ -98,8 +101,21 @@ public class CustomerService {
 	}
 		
 	// display customer-------------------------------------------------------------------------------
-	public List<Customer> displayCustomer(){
-		return customerDao.displayCustomer();
+	public ResponseStructure<List<Customer>> displayCustomer(){
+		
+		List<Customer> customers = customerDao.displayCustomer();
+		
+		if(customers != null) {
+			responseStructure2.setStatusCode(HttpStatus.ACCEPTED.value());
+			responseStructure2.setMsg("customers-details");
+			responseStructure2.setData(customers);
+			return responseStructure2;
+		}else {
+			responseStructure2.setStatusCode(HttpStatus.NOT_ACCEPTABLE.value());
+			responseStructure2.setMsg("Customers-detail not found");
+			responseStructure2.setData(null);
+			return responseStructure2;
+		}
 	}
 		
 	

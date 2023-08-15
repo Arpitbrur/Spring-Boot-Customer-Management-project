@@ -47,7 +47,7 @@ public class CustomerController {
 		
 	// display customer-------------------------------------------------------------------------------
 	@GetMapping("/getAllCustomer")
-	public List<Customer> displayCustomer(){
+	public ResponseStructure<List<Customer>> displayCustomer(){
 		return customerService.displayCustomer();
 	}
 }
