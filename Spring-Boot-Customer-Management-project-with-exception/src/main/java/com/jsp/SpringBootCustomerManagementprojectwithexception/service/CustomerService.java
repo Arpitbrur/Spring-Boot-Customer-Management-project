@@ -49,11 +49,6 @@ public class CustomerService {
 			responseStructure.setData(customer);
 			return responseStructure;
 		}else {
-//			responseStructure.setStatusCode(HttpStatus.ACCEPTED.value());
-//			responseStructure.setMsg("data not fetch because data is not present in database");
-//			responseStructure.setData(null);
-//			return responseStructure;
-				
 			throw new IdNotFoundException("given id is not present in database please check your id ");
 		}
 	}
@@ -68,11 +63,6 @@ public class CustomerService {
 			responseStructure.setData(customer2);
 				
 		}else {
-//			responseStructure.setStatusCode(HttpStatus.NOT_FOUND.value());
-//			responseStructure.setMsg("Given id is not present in database ");
-//			responseStructure.setData(null);
-//			return responseStructure;
-				
 			throw new IdNotFoundException("Given Id is not present in database");
 
 		}
@@ -89,10 +79,6 @@ public class CustomerService {
 			responseStructure.setData(customer2);
 
 		}else {
-//			responseStructure.setStatusCode(HttpStatus.ACCEPTED.value());
-//			responseStructure.setMsg("data is not update ");
-//			responseStructure.setData(null);
-//			return responseStructure;
 				
 			throw new IdNotFoundException("Given Id is not present in database");
 
